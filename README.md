@@ -10,7 +10,7 @@ This is a LEMP debian based box. Use it for a Magento 1 simi-production Stack.
 
 ## How to use
 
-1) download https://github.com/gmdotnet/Vagrant-LEMP-Magento.git
+1) download https://github.com/gmdotnet/Vagrant-LEMP-Magento/archive/master.zip
 
 2) unzip on your favorite work folder
 
