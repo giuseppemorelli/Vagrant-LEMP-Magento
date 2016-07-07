@@ -3,7 +3,10 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "debian/jessie64"
+  config.vm.box = "gmlempmagento"
+  config.vm.box_version = "1.0.0"
+  # for more info check: https://github.com/hollodotme/Helpers/blob/master/Tutorials/vagrant/self-hosted-vagrant-boxes-with-versioning.md
+  config.vm.box_url = "http://public.giuseppemorelli.net/vagrant/boxes/gmlempmagento/gmlempmagento.json"
   config.vm.hostname = "gmlempmagento"
   config.vm.define "gmlempmagento" do |gmlempmagento|
   end
@@ -34,7 +37,7 @@ Vagrant.configure("2") do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
 
   #config.vm.synced_folder "/local/folder/project.com", "/var/www/proejct.com", create: true, owner: "www-data"
-#config.vm.synced_folder "/extra/folder", "/mnt/extra/folder"
+  #config.vm.synced_folder "/extra/folder", "/mnt/extra/folder"
 
   config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
