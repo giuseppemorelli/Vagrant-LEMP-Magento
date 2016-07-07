@@ -1,6 +1,6 @@
 # Vagrant Box LEMP Stack
 
-This is a LEMP debian based box. Use it for a Magento simi-production Stack.
+This is a LEMP debian based box. Use it for a Magento 1 simi-production Stack.
 
 ## Requirements
 
@@ -10,7 +10,7 @@ This is a LEMP debian based box. Use it for a Magento simi-production Stack.
 
 ## How to use
 
-1) download
+1) download https://github.com/gmdotnet/Vagrant-LEMP-Magento.git
 
 2) unzip on your favorite work folder
 
@@ -29,16 +29,47 @@ This is a LEMP debian based box. Use it for a Magento simi-production Stack.
 
 ## Software Installed
 
-
+- htop
+- mytop
+- git
+- nginx 1.6.2
+- php5-fpm  5.6.22
+- php5-curl
+- php5-gd
+- php5-mcrypt
+- php5-mysql
+- php5-cli
+- php5-intl
+- phpmyadmin 4.6.3 - all languages (accessible via *http://phpmyadmin.vagrant* on your file host with the same ip of vagrant machine)
+- mysql percona 5.6
+- curl
+- mc-dbg (midnight commander)
+- composer 1.1.3
+- n98-magerun 1.97.22
+- modman 1.12
+- optipng 0.7.5
+- jpegoptim 1.4.1
+- mysqltuner 1.6.0
+- redis server 2.8.17
 
 ### MySQL Percona server
 
 - created an user called 'local' with root privilegies
 - root password is 'vagrant'
 
+### PHP-FPM
+
+- listen on 127.0.0.1:9000
+- daemon user is 'www-data'
+
 ### Nginx server
 
 - daemon user is 'www-data'
+- configuration sample for magento
+
+### Redis Server
+
+- no password required
 
 ### Vagrant Provision script
 
