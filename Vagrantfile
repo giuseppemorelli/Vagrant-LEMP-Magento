@@ -1,20 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'yaml'
+vagrantconfig = YAML.load_file('config/config.yaml')
+
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "gmlempmagento"
-  config.vm.box_version = "1.0.0"
-  # for more info check: https://github.com/hollodotme/Helpers/blob/master/Tutorials/vagrant/self-hosted-vagrant-boxes-with-versioning.md
-  config.vm.box_url = "http://public.giuseppemorelli.net/vagrant/boxes/gmlempmagento/gmlempmagento.json"
-  config.vm.hostname = "gmlempmagento"
-  config.vm.define "gmlempmagento" do |gmlempmagento|
+  config.vm.box = "giuseppemorelli/lemp-magento-stack"
+  config.vm.box_version = "1.0.1"
+  config.vm.hostname = vagrantconfig['hostname']
+  config.vm.define vagrantconfig['vagrantbox_name'] do |gmlempmagento|
   end
-
-  # Disable automatic box update checking. If you disable this, then
-  # boxes will only be checked for updates when the user runs
-  # `vagrant box outdated`. This is not recommended.
-  config.vm.box_check_update = false
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -23,7 +19,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.251.10"
+  config.vm.network "private_network", ip: vagrantconfig['private_ip']
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -36,15 +32,16 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
 
-  #config.vm.synced_folder "/local/folder/project.com", "/var/www/proejct.com", create: true, owner: "www-data"
+  config.vm.synced_folder vagrantconfig['host_project_folder'], vagrantconfig['vagrant_project_folder'], create: true, owner: "vagrant"
   #config.vm.synced_folder "/extra/folder", "/mnt/extra/folder"
+  #config.vm.synced_folder "/home/user/.ssh", "/home/vagrant/.ssh"
 
   config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-     vb.memory = "3024"
+     vb.memory = vagrantconfig['ram']
   end
   #
   # View the documentation for the provider you are using for more
