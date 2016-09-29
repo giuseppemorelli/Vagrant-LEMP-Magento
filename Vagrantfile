@@ -6,10 +6,10 @@ vagrantconfig = YAML.load_file('config/config.yaml')
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "giuseppemorelli/lemp-magento-stack"
+  config.vm.box = "giuseppemorelli/lamp-stack"
   config.vm.box_version = "1.0.1"
   config.vm.hostname = vagrantconfig['hostname']
-  config.vm.define vagrantconfig['vagrantbox_name'] do |gmlempmagento|
+  config.vm.define vagrantconfig['vagrantbox_name'] do |gmdev|
   end
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -33,7 +33,11 @@ Vagrant.configure("2") do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
 
   vagrantconfig['share'].each do |share|
-    config.vm.synced_folder share['folder']['host_folder'], share['folder']['host_folder'], create: true, owner: "vagrant"
+    config.vm.synced_folder share['folder']['host_folder'], share['folder']['vagrant_folder'], create: true, owner: "vagrant"
+  end
+
+  vagrantconfig['rsync'].each do |rsync|
+      config.vm.synced_folder rsync['folder']['host_folder'], rsync['folder']['vagrant_folder'], type: "rsync"
   end
 
   config.vm.provider "virtualbox" do |vb|
@@ -41,11 +45,8 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-     vb.memory = vagrantconfig['ram']
+    vb.memory = vagrantconfig['ram']
   end
-  #
-  # View the documentation for the provider you are using for more
-  # information on available options.
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
   # such as FTP and Heroku are also available. See the documentation at
