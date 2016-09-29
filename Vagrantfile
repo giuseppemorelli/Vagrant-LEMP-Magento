@@ -6,10 +6,10 @@ vagrantconfig = YAML.load_file('config/config.yaml')
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "giuseppemorelli/lamp-stack"
+  config.vm.box = "giuseppemorelli/lemp-magento-stack"
   config.vm.box_version = "1.0.1"
   config.vm.hostname = vagrantconfig['hostname']
-  config.vm.define vagrantconfig['vagrantbox_name'] do |gmdev|
+  config.vm.define vagrantconfig['vagrantbox_name'] do |gmlempmagento|
   end
 
   # Create a forwarded port mapping which allows access to a specific port
