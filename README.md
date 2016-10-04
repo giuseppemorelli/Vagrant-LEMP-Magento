@@ -1,4 +1,19 @@
+[![stable version](https://img.shields.io/badge/stable%20version-1.0.4-green.svg?style=flat-square)](https://github.com/gmdotnet/Vagrant-LEMP-Magento/releases/tag/1.0.4)
+[![develop](https://img.shields.io/badge/beta%20version-branch%20develop-oran.svg?style=flat-square)](https://github.com/gmdotnet/Vagrant-LEMP-Magento/tree/develop)
+[![license](https://img.shields.io/badge/license-OSL--3-blue.svg?style=flat-square)](https://github.com/gmdotnet/Vagrant-LEMP-Magento/blob/master/LICENSE.txt)
+
 # Vagrant Box LEMP Stack
+
+```
+   _____ __  __     _       _              _    __      __                         _     _      ______ __  __ _____  
+  / ____|  \/  |   | |     | |            | |   \ \    / /                        | |   | |    |  ____|  \/  |  __ \ 
+ | |  __| \  / | __| | ___ | |_ _ __   ___| |_   \ \  / /_ _  __ _ _ __ __ _ _ __ | |_  | |    | |__  | \  / | |__) |
+ | | |_ | |\/| |/ _` |/ _ \| __| '_ \ / _ \ __|   \ \/ / _` |/ _` | '__/ _` | '_ \| __| | |    |  __| | |\/| |  ___/ 
+ | |__| | |  | | (_| | (_) | |_| | | |  __/ |_     \  / (_| | (_| | | | (_| | | | | |_  | |____| |____| |  | | |     
+  \_____|_|  |_|\__,_|\___/ \__|_| |_|\___|\__|     \/ \__,_|\__, |_|  \__,_|_| |_|\__| |______|______|_|  |_|_|     
+                                                              __/ |                                                  
+                                                             |___/                                                   
+```
 
 This is a LEMP debian based box. Use it for a Magento 1.x CE simi-production Stack.
 
@@ -17,12 +32,17 @@ This is a LEMP debian based box. Use it for a Magento 1.x CE simi-production Sta
 3) rename `config/config.yaml.sample` in `config/config.yaml`
 
 4) change settings in `config/config.yaml`
+(if you need more information about sync folder and rsync folder just have a look here: https://www.vagrantup.com/docs/synced-folders/basic_usage.html)
 
-5) run `vagrant up` on folder where is `Vagrantfile`
+5) rename `script/backup_database.cfg.sample` in `script/backup_database.cfg`
 
-6) (optional) make your configuration on vagrant machine entering by run `vagrant ssh`
+6) change settings in `script/backup_database.cfg` for backup folder as you wish
 
-7) have fun and happy coding!
+7) run `vagrant up` on folder where is `Vagrantfile`
+
+8) (optional) make your configuration on vagrant machine entering by run `vagrant ssh`
+
+9) have fun and happy coding!
 
 ## OS and base box
 
@@ -95,7 +115,16 @@ This is a LEMP debian based box. Use it for a Magento 1.x CE simi-production Sta
 
 ### Vagrant Provision script
 
-- `backup_database.sh`: the script makes a backup of all databases into /home/backup/database/ folder
+- `backup_database.sh`: you can use this script as single shell script or with `vagrant up --provision` 
+
+### Vagrant Provision Ansible Local
+
+There is a sample empty ansible playbook to customize.
+
+Instructions:
+
+- uncomment on `Vagrantfile` the section `Ansible provision`
+- start vagrant provision (automatically with new vagrant machine, with `vagrant provision` for vagrant machine previously created)
 
 ### Other info
 

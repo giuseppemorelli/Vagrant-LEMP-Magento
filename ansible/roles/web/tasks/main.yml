@@ -1,0 +1,6 @@
+---
+
+- name: nginx disable all website
+  shell: rm -rf /etc/nginx/sites-enabled/*
+  notify:
+    - restart nginx

@@ -1,0 +1,8 @@
+---
+
+- name: Vagrant LEMP provisioning
+  hosts: all
+  sudo: true
+  remote_user: root
+  roles:
+    - web
