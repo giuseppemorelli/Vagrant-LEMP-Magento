@@ -1,6 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+##################################
+##                              ##
+## GMdotnet Vagrant LEMP Stack  ##
+## Version 1.0.4                ##
+##                              ##
+##################################
+
+# Import configuration
+
 require 'yaml'
 vagrantconfig = YAML.load_file('config/config.yaml')
 
