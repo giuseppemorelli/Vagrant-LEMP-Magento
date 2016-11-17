@@ -49,7 +49,7 @@ This is a LEMP debian based box. Use it for a Magento 1.x CE simi-production Sta
 - debian/jessie64  8.5.1
 - default private network ip: 192.168.251.10
 
-## Software Installed
+## Software Installed in `giuseppemorelli/lemp-magento-stack` box version 1.0.1
 
 - [composer](https://getcomposer.org/)  1.2.0
 - curl
